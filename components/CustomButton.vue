@@ -1,5 +1,5 @@
 <template>
-  <v-btn :nuxt="to" :to="to" color="primary" rounded>
+  <v-btn :nuxt="to ? true : false" :to="to" color="primary" rounded>
     <slot />
   </v-btn>
 </template>
