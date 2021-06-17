@@ -52,6 +52,9 @@ export default {
   vuetify: {
     treeShake: true,
     customVariables: ['~/assets/variables.scss'],
+    font: {
+      family: 'Lato',
+    },
     theme: {
       dark: false,
       themes: {

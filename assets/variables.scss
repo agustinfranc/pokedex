@@ -2,3 +2,10 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+$body-font-family: 'Lato';
+$heading-font-family: 'Lato';
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+@import '~vuetify/src/styles/styles.sass';
