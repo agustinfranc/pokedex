@@ -2,39 +2,56 @@
   <div>
     <search-field />
 
-    <v-list nav class="pa-0">
-      <v-list-item-group v-model="selectedItem" color="primary">
-        <v-list-item v-for="(item, i) in items" :key="i">
-          <v-list-item-content>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-          </v-list-item-content>
+    <pokemon-list :pokemons="pokemons" @open-dialog="openDialog" />
 
-          <v-list-item-icon>
-            <v-icon v-text="'mdi-star'"></v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
+    <pokemon-dialog v-model="dialog" :pokemon="pokemon" />
   </div>
 </template>
 
 <script>
-import SearchField from '@/components/SearchField.vue'
-
 export default {
   name: 'List',
-
-  components: {
-    SearchField,
-  },
 
   layout: 'blank',
 
   data() {
     return {
-      selectedItem: 0,
-      items: [{ text: 'Pikachu' }, { text: 'Machamp' }, { text: 'Charizard' }],
+      dialog: false,
+      pokemons: [],
+      pokemon: {},
     }
+  },
+
+  async fetch() {
+    try {
+      const url = 'https://pokeapi.co/api/v2/pokemon'
+      const res = await this.$axios.$get(url)
+
+      this.pokemons = res.results
+    } catch (error) {
+      console.error(error.response ?? error)
+    }
+  },
+
+  methods: {
+    toggleFromFavorites() {
+      console.log('addto')
+    },
+    openDialog(item) {
+      this.dialog = true
+
+      this.fetchPokemon(item)
+    },
+    async fetchPokemon(item) {
+      try {
+        const url = `https://pokeapi.co/api/v2/pokemon/${item.name}`
+        const res = await this.$axios.$get(url)
+
+        this.pokemon = res
+      } catch (error) {
+        console.error(error.response ?? error)
+      }
+    },
   },
 }
 </script>
@@ -46,7 +63,7 @@ export default {
   .v-list-item {
     background-color: white;
 
-    .v-list-item__title {
+    .v-list-item__title.custom-item__title {
       font-size: 1.375rem;
     }
   }
