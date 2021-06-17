@@ -2,14 +2,14 @@
   <v-list nav class="pa-0">
     <v-list-item-group color="primary">
       <v-list-item
-        v-for="(item, i) in pokemons"
+        v-for="(pokemon, i) in pokemons"
         :key="i"
-        @click.stop="$emit('open-dialog', item)"
+        @click.stop="$emit('open-dialog', pokemon)"
       >
         <v-list-item-content>
           <v-list-item-title
             class="custom-item__title"
-            v-text="item.name"
+            v-text="pokemon.name"
           ></v-list-item-title>
         </v-list-item-content>
 
