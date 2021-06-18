@@ -30,23 +30,23 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'List',
 
+  async asyncData({ $axios }) {
+    try {
+      const url = 'https://pokeapi.co/api/v2/pokemon'
+      const res = await $axios.$get(url)
+
+      return { pokemons: res.results }
+    } catch (error) {
+      console.error(error.response ?? error)
+    }
+  },
+
   data() {
     return {
       dialog: false,
       pokemons: [],
       pokemon: null,
       searchText: '',
-    }
-  },
-
-  async fetch() {
-    try {
-      const url = 'https://pokeapi.co/api/v2/pokemon'
-      const res = await this.$axios.$get(url)
-
-      this.pokemons = res.results
-    } catch (error) {
-      console.error(error.response ?? error)
     }
   },
 
