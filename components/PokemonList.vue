@@ -13,7 +13,9 @@
           ></v-list-item-title>
         </v-list-item-content>
 
-        <v-list-item-icon @click.stop="toggleFromFavorites">
+        <v-list-item-icon
+          @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
+        >
           <v-icon v-text="'mdi-star'"></v-icon>
         </v-list-item-icon>
       </v-list-item>
