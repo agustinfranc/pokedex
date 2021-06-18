@@ -8,7 +8,7 @@
       >
         <v-list-item-content>
           <v-list-item-title
-            class="custom-item__title capitalize"
+            class="custom-item__title capitalize ml-3"
             v-text="pokemon.name"
           ></v-list-item-title>
         </v-list-item-content>
@@ -16,10 +16,12 @@
         <v-list-item-icon
           @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
         >
-          <v-icon
-            :color="pokemon.isFav ? 'orange' : ''"
-            v-text="'mdi-star'"
-          ></v-icon>
+          <v-btn elevation="0" color="#F5F5F5" fab small>
+            <v-icon
+              :color="pokemon.isFav ? 'orange' : '#BFBFBF'"
+              v-text="'mdi-star'"
+            ></v-icon>
+          </v-btn>
         </v-list-item-icon>
       </v-list-item>
     </v-list-item-group>

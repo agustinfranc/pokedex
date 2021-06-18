@@ -21,7 +21,7 @@
 
       <v-card-text>
         <div class="font-weight-bold mb-2">
-          <v-list nav class="pa-0">
+          <v-list class="pa-0">
             <v-list-item-group color="primary">
               <v-list-item>
                 <v-list-item-content>
@@ -32,6 +32,8 @@
                 </v-list-item-content>
               </v-list-item>
 
+              <v-divider></v-divider>
+
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title
@@ -39,6 +41,8 @@
                   ></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+
+              <v-divider></v-divider>
 
               <v-list-item>
                 <v-list-item-content>
@@ -48,6 +52,8 @@
                 </v-list-item-content>
               </v-list-item>
 
+              <v-divider></v-divider>
+
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>
@@ -56,18 +62,26 @@
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+
+              <v-divider></v-divider>
             </v-list-item-group>
           </v-list>
         </div>
 
-        <div class="d-flex justify-space-between">
-          <custom-button> Share to my friends </custom-button>
+        <div class="d-flex justify-space-between mt-5">
+          <custom-button rounded large> Share to my friends </custom-button>
 
-          <v-icon
-            :color="pokemon.isFav ? 'orange' : ''"
+          <v-btn
+            fab
+            small
+            elevation="0"
             @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
-            v-text="'mdi-star'"
-          ></v-icon>
+          >
+            <v-icon
+              :color="pokemon.isFav ? 'orange' : '#BFBFBF'"
+              v-text="'mdi-star'"
+            ></v-icon>
+          </v-btn>
         </div>
       </v-card-text>
     </v-card>
