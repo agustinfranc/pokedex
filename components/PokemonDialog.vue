@@ -69,7 +69,9 @@
         </div>
 
         <div class="d-flex justify-space-between mt-5">
-          <custom-button rounded large> Share to my friends </custom-button>
+          <div @click="copyToClipboard(pokemon)">
+            <custom-button rounded large> Share to my friends </custom-button>
+          </div>
 
           <v-btn
             fab
@@ -101,6 +103,16 @@ export default {
         .map((type) => type.type.name)
         .map((name) => name.replace(/^\w/, (c) => c.toUpperCase()))
         .join(', ')
+    },
+    async copyToClipboard({ name, weight, height, types }) {
+      const pokemon = { name, weight, height, types: this.types(types) }
+
+      const text = Object.entries(pokemon)
+        .map((e) => e.join(': '))
+        .join(', ')
+
+      await navigator.clipboard.writeText(text)
+      alert(text)
     },
   },
 }
