@@ -3,7 +3,7 @@
     :nuxt="to ? true : false"
     :to="to"
     :block="block"
-    color="primary"
+    :color="color"
     :rounded="rounded"
     :fab="!!icon"
     :small="small"
@@ -47,6 +47,11 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    color: {
+      type: String,
+      required: false,
+      default: 'primary',
     },
   },
 }
