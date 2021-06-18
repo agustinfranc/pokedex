@@ -1,4 +1,14 @@
-# pokedex
+# Pokedex
+Frontend SPA con Vue.js
+
+## Stack
+- Vue.js
+- Nuxt
+- SASS
+- Vuetify
+- Axios (requests)
+- Jest (testing)
+- Prettier and Linter
 
 ## Build Setup
 
@@ -16,5 +26,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
