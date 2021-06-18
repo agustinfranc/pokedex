@@ -3,9 +3,9 @@
     <welcome-logo class="mb-5 mt-15" />
 
     <v-container class="d-flex flex-column align-center">
-      <h1 class="mb-4">Welcome to Pokédex</h1>
+      <h2 class="mb-4">Welcome to Pokédex</h2>
 
-      <p class="title text-center my-4">
+      <p class="subtitle-1 text-center my-4">
         The digital encyclopedia created by Professor Oak is an invaluable tool
         to Trainers in the Pokémon world.
       </p>

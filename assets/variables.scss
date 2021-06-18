@@ -5,6 +5,16 @@
 
 $body-font-family: 'Lato';
 $heading-font-family: 'Lato';
+$headings: (
+  'h2': (
+    'size': 1.625rem,
+  ),
+  'subtitle-1': (
+      'size': 1.125rem,
+      'line-height': 1.7rem,
+    ),
+);
+
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
