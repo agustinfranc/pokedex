@@ -11,7 +11,9 @@
       </p>
     </v-container>
 
-    <custom-button nuxt to="/list" class="mt-8"> Get started </custom-button>
+    <custom-button nuxt to="/list" class="mt-8" rounded large>
+      Get started
+    </custom-button>
   </div>
 </template>
 
