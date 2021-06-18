@@ -4,7 +4,11 @@
     :to="to"
     :block="block"
     color="primary"
-    rounded
+    :rounded="rounded"
+    :fab="!!icon"
+    :small="small"
+    :large="large"
+    elevation="0"
   >
     <v-icon v-if="icon" left> {{ icon }} </v-icon>
 
@@ -20,6 +24,21 @@ export default {
       required: false,
     },
     block: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    rounded: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    large: {
       type: Boolean,
       required: false,
       default: false,
