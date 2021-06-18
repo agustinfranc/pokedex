@@ -6,17 +6,20 @@
     @input="$emit('input', $event.target.value)"
   >
     <v-card>
-      <v-img
-        height="220px"
-        :src="pokemon.sprites ? pokemon.sprites.front_default : ''"
-      >
-        <v-app-bar flat color="rgba(0, 0, 0, 0)">
-          <v-spacer></v-spacer>
+      <v-img height="220px" src="/img/background.png">
+        <v-img
+          contain
+          height="220px"
+          :src="pokemon.sprites ? pokemon.sprites.front_default : ''"
+        >
+          <v-app-bar flat color="rgba(0, 0, 0, 0)">
+            <v-spacer></v-spacer>
 
-          <v-btn color="black" icon @click.stop="$emit('input', false)">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-app-bar>
+            <v-btn color="black" icon @click.stop="$emit('input', false)">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-app-bar>
+        </v-img>
       </v-img>
 
       <v-card-text>
