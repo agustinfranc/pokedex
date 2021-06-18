@@ -16,9 +16,9 @@
         <v-list-item-icon
           @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
         >
-          <v-btn elevation="0" color="#F5F5F5" fab small>
+          <v-btn elevation="0" color="secondary" fab small>
             <v-icon
-              :color="pokemon.isFav ? 'orange' : '#BFBFBF'"
+              :color="pokemon.isFav ? 'orange' : 'disabled'"
               v-text="'mdi-star'"
             ></v-icon>
           </v-btn>

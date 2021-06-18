@@ -83,7 +83,7 @@
             @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
           >
             <v-icon
-              :color="pokemon.isFav ? 'orange' : '#BFBFBF'"
+              :color="pokemon.isFav ? 'orange' : 'disabled'"
               v-text="'mdi-star'"
             ></v-icon>
           </v-btn>

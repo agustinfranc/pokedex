@@ -7,9 +7,9 @@
           icon="mdi-format-list-bulleted-square"
           rounded
           small
-          :color="!favourites ? 'primary' : '#BFBFBF'"
+          :color="!favourites ? 'primary' : 'disabled'"
         >
-          All {{ favourites }}
+          All
         </custom-button>
       </div>
     </v-col>
@@ -20,7 +20,7 @@
           icon="mdi-star"
           rounded
           small
-          :color="favourites ? 'primary' : '#BFBFBF'"
+          :color="favourites ? 'primary' : 'disabled'"
         >
           Favorites
         </custom-button>
