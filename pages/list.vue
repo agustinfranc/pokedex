@@ -8,7 +8,7 @@
       @toggle-favourite-pokemon="toggleFavouritePokemonFromStore"
     />
 
-    <pokemon-not-found v-show="allPokemons.length === 0 && searchText !== ''" />
+    <pokemon-not-found v-if="allPokemons.length === 0 && searchText !== ''" />
 
     <pokemon-dialog
       v-if="pokemon"
@@ -16,6 +16,8 @@
       :pokemon="pokemon"
       @toggle-favourite-pokemon="toggleFavouritePokemon"
     />
+
+    <bottom-bar v-if="allPokemons.length" />
   </div>
 </template>
 
