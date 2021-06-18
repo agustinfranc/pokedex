@@ -8,7 +8,10 @@
       @toggle-favourite-pokemon="toggleFavouritePokemonFromStore"
     />
 
-    <pokemon-not-found v-if="allPokemons.length === 0 && searchText !== ''" />
+    <pokemon-not-found
+      v-if="allPokemons.length === 0 && searchText !== ''"
+      @clear-search-field="clearSearchField"
+    />
 
     <pokemon-dialog
       v-if="pokemon"
@@ -103,6 +106,9 @@ export default {
         this.pokemon.isFav = true
         this.toggleFavouritePokemonFromStore(this.pokemon)
       }
+    },
+    clearSearchField() {
+      this.searchText = ''
     },
   },
 }
