@@ -3,13 +3,13 @@
     <search-field v-model="searchText" />
 
     <pokemon-list
-      :pokemons="allPokemons"
+      :pokemons="filteredPokemons"
       @open-dialog="openDialog"
       @toggle-favourite-pokemon="toggleFavouritePokemonFromStore"
     />
 
     <pokemon-not-found
-      v-if="allPokemons.length === 0 && searchText !== ''"
+      v-if="displayNotFound"
       @clear-search-field="clearSearchField"
     />
 
@@ -20,7 +20,11 @@
       @toggle-favourite-pokemon="toggleFavouritePokemon"
     />
 
-    <bottom-bar v-if="allPokemons.length" />
+    <bottom-bar
+      v-if="!displayNotFound"
+      :favourites="listOnlyFavourites"
+      @set-list-only-favourites="setListOnlyFavourites"
+    />
   </div>
 </template>
 
@@ -47,23 +51,26 @@ export default {
       pokemons: [],
       pokemon: null,
       searchText: '',
+      listOnlyFavourites: false,
     }
   },
 
   computed: {
     ...mapState(['favouritePokemons']),
 
-    allPokemons() {
-      const pokemons = this.pokemons.map((pokemon) => {
-        const isFav = !!this.favouritePokemons.find(
-          (favouritePokemon) => favouritePokemon.name === pokemon.name
-        )
+    filteredPokemons() {
+      const pokemons = this.listOnlyFavourites
+        ? this.favouritePokemons.map((pokemon) => ({ ...pokemon, isFav: true }))
+        : this.pokemons.map((pokemon) => {
+            const isFav = !!this.favouritePokemons.find(
+              (favouritePokemon) => favouritePokemon.name === pokemon.name
+            )
 
-        return {
-          ...pokemon,
-          isFav,
-        }
-      })
+            return {
+              ...pokemon,
+              isFav,
+            }
+          })
 
       if (typeof this.searchText !== 'string' || this.searchText.length === 0) {
         return pokemons
@@ -72,6 +79,10 @@ export default {
       return pokemons.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(this.searchText.toLowerCase())
       )
+    },
+
+    displayNotFound() {
+      return this.filteredPokemons.length === 0 && this.searchText !== ''
     },
   },
 
@@ -83,6 +94,7 @@ export default {
 
       this.fetchPokemon(item)
     },
+
     async fetchPokemon(item) {
       try {
         const url = `https://pokeapi.co/api/v2/pokemon/${item.name}`
@@ -96,6 +108,7 @@ export default {
         console.error(error.response ?? error)
       }
     },
+
     toggleFavouritePokemon() {
       if (this.pokemon.isFav) {
         this.toggleFavouritePokemonFromStore(this.pokemon)
@@ -105,8 +118,13 @@ export default {
         this.toggleFavouritePokemonFromStore(this.pokemon)
       }
     },
+
     clearSearchField() {
       this.searchText = ''
+    },
+
+    setListOnlyFavourites(value) {
+      this.listOnlyFavourites = value
     },
   },
 }
