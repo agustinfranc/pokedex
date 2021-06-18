@@ -1,0 +1,25 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+// $font-size-root: 20px;
+
+$body-font-family: 'Lato';
+$heading-font-family: 'Lato';
+$headings: (
+  'h2': (
+    'size': 1.625rem,
+  ),
+  'subtitle-1': (
+      'size': 1.125rem,
+      'line-height': 1.7rem,
+    ),
+);
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+$material-light: (
+  'background': #E5E5E5
+);
+
+@import '~vuetify/src/styles/styles.sass';
