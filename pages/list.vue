@@ -8,6 +8,8 @@
       @toggle-favourite-pokemon="toggleFavouritePokemonFromStore"
     />
 
+    <pokemon-not-found v-show="allPokemons.length === 0 && searchText !== ''" />
+
     <pokemon-dialog
       v-if="pokemon"
       v-model="dialog"
