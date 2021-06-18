@@ -2,12 +2,12 @@
   <v-dialog
     persistent
     :value="value"
-    max-width="290"
+    max-width="570"
     @input="$emit('input', $event.target.value)"
   >
-    <v-card width="400">
+    <v-card>
       <v-img
-        height="200px"
+        height="220px"
         :src="pokemon.sprites ? pokemon.sprites.front_default : ''"
       >
         <v-app-bar flat color="rgba(0, 0, 0, 0)">
@@ -60,13 +60,15 @@
           </v-list>
         </div>
 
-        <custom-button> Share to my friends </custom-button>
+        <div class="d-flex justify-space-between">
+          <custom-button> Share to my friends </custom-button>
 
-        <v-icon
-          :color="pokemon.isFav ? 'orange' : ''"
-          @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
-          v-text="'mdi-star'"
-        ></v-icon>
+          <v-icon
+            :color="pokemon.isFav ? 'orange' : ''"
+            @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
+            v-text="'mdi-star'"
+          ></v-icon>
+        </div>
       </v-card-text>
     </v-card>
   </v-dialog>
