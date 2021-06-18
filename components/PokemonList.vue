@@ -8,7 +8,7 @@
       >
         <v-list-item-content>
           <v-list-item-title
-            class="custom-item__title"
+            class="custom-item__title capitalize"
             v-text="pokemon.name"
           ></v-list-item-title>
         </v-list-item-content>
@@ -16,7 +16,10 @@
         <v-list-item-icon
           @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
         >
-          <v-icon v-text="'mdi-star'"></v-icon>
+          <v-icon
+            :color="pokemon.isFav ? 'orange' : ''"
+            v-text="'mdi-star'"
+          ></v-icon>
         </v-list-item-icon>
       </v-list-item>
     </v-list-item-group>
@@ -30,3 +33,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.capitalize {
+  text-transform: capitalize;
+}
+</style>
