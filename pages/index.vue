@@ -18,17 +18,7 @@
 </template>
 
 <script>
-import CustomButton from '~/components/CustomButton.vue'
-import WelcomeLogo from '~/components/WelcomeLogo.vue'
-
 export default {
   name: 'Welcome',
-
-  components: {
-    CustomButton,
-    WelcomeLogo,
-  },
-
-  layout: 'blank',
 }
 </script>

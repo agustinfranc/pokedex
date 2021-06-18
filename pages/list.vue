@@ -30,8 +30,6 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'List',
 
-  layout: 'blank',
-
   data() {
     return {
       dialog: false,
