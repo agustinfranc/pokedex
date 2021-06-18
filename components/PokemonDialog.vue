@@ -25,9 +25,10 @@
             <v-list-item-group color="primary">
               <v-list-item>
                 <v-list-item-content>
-                  <v-list-item-title
-                    v-text="`Name: ${pokemon.name}`"
-                  ></v-list-item-title>
+                  <v-list-item-title>
+                    <span>Name: </span>
+                    <span class="capitalize">{{ pokemon.name }}</span>
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
 
@@ -49,9 +50,10 @@
 
               <v-list-item>
                 <v-list-item-content>
-                  <v-list-item-title
-                    v-text="`Types: ${pokemon.types}`"
-                  ></v-list-item-title>
+                  <v-list-item-title>
+                    <span>Types: </span>
+                    <span>{{ types(pokemon.types) }}</span>
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list-item-group>
@@ -59,6 +61,12 @@
         </div>
 
         <custom-button> Share to my friends </custom-button>
+
+        <v-icon
+          :color="pokemon.isFav ? 'orange' : ''"
+          @click.stop="$emit('toggle-favourite-pokemon', pokemon)"
+          v-text="'mdi-star'"
+        ></v-icon>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -70,5 +78,20 @@ export default {
     value: Boolean,
     pokemon: Object,
   },
+
+  methods: {
+    types(types) {
+      return types
+        .map((type) => type.type.name)
+        .map((name) => name.replace(/^\w/, (c) => c.toUpperCase()))
+        .join(', ')
+    },
+  },
 }
 </script>
+
+<style>
+.capitalize {
+  text-transform: capitalize;
+}
+</style>
