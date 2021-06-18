@@ -21,9 +21,9 @@
 
       <v-card-text>
         <div class="font-weight-bold mb-2">
-          <v-list class="pa-0">
+          <v-list class="py-0 px-2">
             <v-list-item-group color="primary">
-              <v-list-item>
+              <v-list-item class="px-0">
                 <v-list-item-content>
                   <v-list-item-title>
                     <span>Name: </span>
@@ -34,7 +34,7 @@
 
               <v-divider></v-divider>
 
-              <v-list-item>
+              <v-list-item class="px-0">
                 <v-list-item-content>
                   <v-list-item-title
                     v-text="`Weight: ${pokemon.weight}`"
@@ -44,7 +44,7 @@
 
               <v-divider></v-divider>
 
-              <v-list-item>
+              <v-list-item class="px-0">
                 <v-list-item-content>
                   <v-list-item-title
                     v-text="`Height: ${pokemon.height}`"
@@ -54,7 +54,7 @@
 
               <v-divider></v-divider>
 
-              <v-list-item>
+              <v-list-item class="px-0">
                 <v-list-item-content>
                   <v-list-item-title>
                     <span>Types: </span>
@@ -68,7 +68,7 @@
           </v-list>
         </div>
 
-        <div class="d-flex justify-space-between mt-5">
+        <div class="d-flex justify-space-between mt-5 px-2">
           <div @click="copyToClipboard(pokemon)">
             <custom-button rounded large> Share to my friends </custom-button>
           </div>
