@@ -1,14 +1,25 @@
 <template>
   <div>
-    <search-field />
+    <search-field v-model="searchText" />
 
-    <pokemon-list :pokemons="pokemons" @open-dialog="openDialog" />
+    <pokemon-list
+      :pokemons="allPokemons"
+      @open-dialog="openDialog"
+      @toggle-favourite-pokemon="toggleFavouritePokemonFromStore"
+    />
 
-    <pokemon-dialog v-model="dialog" :pokemon="pokemon" />
+    <pokemon-dialog
+      v-if="pokemon"
+      v-model="dialog"
+      :pokemon="pokemon"
+      @toggle-favourite-pokemon="toggleFavouritePokemon"
+    />
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'List',
 
@@ -18,7 +29,8 @@ export default {
     return {
       dialog: false,
       pokemons: [],
-      pokemon: {},
+      pokemon: null,
+      searchText: '',
     }
   },
 
@@ -33,10 +45,34 @@ export default {
     }
   },
 
-  methods: {
-    toggleFromFavorites() {
-      console.log('addto')
+  computed: {
+    ...mapState(['favouritePokemons']),
+
+    allPokemons() {
+      const pokemons = this.pokemons.map((pokemon) => {
+        const isFav = !!this.favouritePokemons.find(
+          (favouritePokemon) => favouritePokemon.name === pokemon.name
+        )
+
+        return {
+          ...pokemon,
+          isFav,
+        }
+      })
+
+      if (typeof this.searchText !== 'string' || this.searchText.length === 0) {
+        return pokemons
+      }
+
+      return pokemons.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(this.searchText.toLowerCase())
+      )
     },
+  },
+
+  methods: {
+    ...mapActions(['toggleFavouritePokemonFromStore']),
+
     openDialog(item) {
       this.dialog = true
 
@@ -47,9 +83,21 @@ export default {
         const url = `https://pokeapi.co/api/v2/pokemon/${item.name}`
         const res = await this.$axios.$get(url)
 
-        this.pokemon = res
+        this.pokemon = {
+          ...res,
+          isFav: item.isFav,
+        }
       } catch (error) {
         console.error(error.response ?? error)
+      }
+    },
+    toggleFavouritePokemon() {
+      if (this.pokemon.isFav) {
+        this.toggleFavouritePokemonFromStore(this.pokemon)
+        this.pokemon.isFav = false
+      } else {
+        this.pokemon.isFav = true
+        this.toggleFavouritePokemonFromStore(this.pokemon)
       }
     },
   },

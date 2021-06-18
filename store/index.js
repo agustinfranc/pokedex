@@ -13,7 +13,7 @@ export const mutations = {
 }
 
 export const actions = {
-  toggleFavouritePokemon({ commit, state }, payload) {
+  toggleFavouritePokemonFromStore({ commit, state }, payload) {
     const index = state.favouritePokemons.findIndex(
       (item) => item.name === payload.name
     )
