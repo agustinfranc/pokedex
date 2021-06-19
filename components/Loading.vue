@@ -48,13 +48,18 @@ export default {
 }
 
 .loading-page .loader {
-  transform: scale(1);
-  animation: scale 1s infinite;
+  animation: scale 0.75s ease-in infinite;
 }
 
 @keyframes scale {
-  100% {
+  0% {
+    transform: scale(1);
+  }
+  50% {
     transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
