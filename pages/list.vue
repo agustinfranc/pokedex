@@ -34,17 +34,6 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'List',
 
-  async asyncData({ $axios }) {
-    try {
-      const url = 'https://pokeapi.co/api/v2/pokemon'
-      const res = await $axios.$get(url)
-
-      return { pokemons: res.results }
-    } catch (error) {
-      console.error(error.response ?? error)
-    }
-  },
-
   data() {
     return {
       dialog: false,
@@ -52,6 +41,18 @@ export default {
       pokemon: null,
       searchText: '',
       listOnlyFavourites: false,
+    }
+  },
+
+  async fetch() {
+    try {
+      const url = 'https://pokeapi.co/api/v2/pokemon'
+      const res = await this.$axios.$get(url)
+
+      // return { pokemons: res.results }
+      this.pokemons = res.results
+    } catch (error) {
+      console.error(error.response ?? error)
     }
   },
 
@@ -84,6 +85,13 @@ export default {
     displayNotFound() {
       return this.filteredPokemons.length === 0 && this.searchText !== ''
     },
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
+    })
   },
 
   methods: {

@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @media (min-width: 960px) {
   div.pl-md-custom {
     padding-left: 265px;
