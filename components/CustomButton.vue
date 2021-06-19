@@ -9,6 +9,7 @@
     :small="small"
     :large="large"
     elevation="0"
+    class="white--text"
   >
     <v-icon v-if="icon" left> {{ icon }} </v-icon>
 
@@ -58,7 +59,7 @@ export default {
 </script>
 
 <style>
-.v-btn__content {
-  text-transform: initial;
+.v-btn:not(.v-btn--fab).v-btn:active {
+  background-color: #c00e20 !important;
 }
 </style>

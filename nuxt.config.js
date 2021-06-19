@@ -59,10 +59,12 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: '#F22539',
-          secondary: '#F5F5F5',
+          primary: '#f22539',
+          secondary: '#f5f5f5',
+          dark: '#c00e20',
+          accent: '#eca539',
           info: colors.teal.lighten1,
-          disabled: '#BFBFBF',
+          disabled: '#bfbfbf',
         },
       },
     },

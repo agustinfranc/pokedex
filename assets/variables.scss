@@ -10,16 +10,19 @@ $headings: (
     'size': 1.625rem,
   ),
   'subtitle-1': (
-      'size': 1.125rem,
-      'line-height': 1.7rem,
-    ),
+    'size': 1.125rem,
+    'line-height': 1.7rem,
+  ),
+);
+$material-light: (
+  'background': #E5E5E5,
 );
 
+$btn-active-opacity: 0;
+$btn-focus-opacity: 0;
+$btn-hover-opacity: 0;
+$btn-text-transform: initial;
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-
-$material-light: (
-  'background': #E5E5E5
-);
 
 @import '~vuetify/src/styles/styles.sass';
