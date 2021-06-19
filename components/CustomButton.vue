@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .v-btn:not(.v-btn--fab).v-btn:active {
   background-color: #c00e20 !important;
 }

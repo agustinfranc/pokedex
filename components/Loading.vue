@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .loading-page {
   position: fixed;
   top: 0;
@@ -37,18 +37,18 @@ export default {
   height: 100%;
   background: #e5e5e5;
   z-index: 10;
-}
 
-.loading-page-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .loading-page-container {
+    height: inherit;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.loading-page .loader {
-  animation: scale 0.75s ease-in infinite;
+    .loader {
+      animation: scale 0.75s ease-in infinite;
+    }
+  }
 }
 
 @keyframes scale {
