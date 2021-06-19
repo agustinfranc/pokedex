@@ -1,6 +1,12 @@
 # Pokedex
 Frontend SPA con Vue.js
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/34e98ad6-1e39-41bd-85bc-e62d37c3435a/deploy-status)](https://app.netlify.com/sites/awesome-pokedex/deploys)
+
+Hosted with Netlify
+
+https://awesome-pokedex.netlify.app/
+
 ## Stack
 - Vue.js
 - Nuxt
