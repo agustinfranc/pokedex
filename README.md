@@ -1,5 +1,5 @@
 # Pokedex
-Frontend SPA con Vue.js
+Frontend SPA with Vue.js and Nuxt
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/34e98ad6-1e39-41bd-85bc-e62d37c3435a/deploy-status)](https://app.netlify.com/sites/awesome-pokedex/deploys)
 
