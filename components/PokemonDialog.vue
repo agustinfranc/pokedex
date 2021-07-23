@@ -117,6 +117,7 @@ export default {
       await navigator.clipboard.writeText(text)
 
       // TODO: show notification
+      // remove alert
       alert(text)
     },
   },
