@@ -49,7 +49,6 @@ export default {
       const url = 'https://pokeapi.co/api/v2/pokemon'
       const res = await this.$axios.$get(url)
 
-      // return { pokemons: res.results }
       this.pokemons = res.results
     } catch (error) {
       console.error(error.response ?? error)
